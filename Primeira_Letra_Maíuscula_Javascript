@@ -1,0 +1,21 @@
+function ebfPrimeirasLetrasMaiusculas() {
+  var value = "";
+  if (arguments.length > 0 && typeof arguments[0] === 'string') {
+    var texto = arguments[0];
+    var palavras = texto.split(" ");
+    var palavrasMaiusculas = [];
+
+    for (var i = 0; i < palavras.length; i++) {
+      var palavra = palavras[i];
+      if (palavra.length > 0) {
+        var primeiraLetraMaiuscula = palavra.charAt(0).toUpperCase();
+        var restantePalavra = palavra.slice(1).toLowerCase();
+        palavrasMaiusculas.push(primeiraLetraMaiuscula + restantePalavra);
+      } else {
+        palavrasMaiusculas.push(""); // Mantém espaços em branco
+      }
+    }
+    value = palavrasMaiusculas.join(" ");
+  }
+  return value;
+}
