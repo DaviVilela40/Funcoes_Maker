@@ -1,0 +1,25 @@
+public final Variant ebfcorrigirCaracteres(Variant pPalavra) {     
+
+    if (pPalavra == null) {
+        return Variant.VARIANT_NULL; // Retorna null caso a entrada seja nula
+    }
+
+    String palavra = pPalavra.toString();
+
+    palavra = palavra
+        .replace("Ã¡", "á")
+        .replace("Ã£", "ã")
+        .replace("Ã©", "é")
+        .replace("Ã­", "í")
+        .replace("Ã³", "ó")
+        .replace("Ãº", "ú")
+        .replace("Ã§", "ç")
+        .replace("Ã´", "ô")
+        .replace("Ã¢", "â")
+        .replace("Ãª", "ê")
+        .replace("Ã®", "î")
+        .replace("Ã»", "û")
+        .replace("Ãµ", "õ");
+
+    return new Variant(palavra); // Retorna a string corrigida como um Variant
+}
