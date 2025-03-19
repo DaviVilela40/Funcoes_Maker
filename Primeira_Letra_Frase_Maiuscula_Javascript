@@ -1,0 +1,17 @@
+function ebfPrimeiraLetraFraseMaiuscula() {
+  var value = "";
+  if (arguments.length > 0 && typeof arguments[0] === 'string') {
+    var texto = arguments[0];
+    var frases = texto.split(/([.!?]\s*)/); // Mantém pontuações e espaços após elas
+    
+    for (var i = 0; i < frases.length; i++) {
+      var frase = frases[i].trim();
+      if (frase.length > 0 && /[A-Za-z]/.test(frase[0])) { // Verifica se a frase começa com uma letra
+        frases[i] = frase.charAt(0).toUpperCase() + frase.slice(1);
+      }
+    }
+    
+    value = frases.join("");
+  }
+  return value;
+}
