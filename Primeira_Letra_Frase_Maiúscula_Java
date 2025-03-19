@@ -1,0 +1,26 @@
+protected final Variant ebfPrimeiraLetraFraseMaiuscula(Variant value) throws Exception {
+    if (value == null || value.isNull() || value.getString() == null) {
+        return VariantPool.get(""); // Retorna string vazia se o valor for nulo ou vazio
+    }
+
+    String texto = value.getString();
+    String[] frases = texto.split("(?<=[.!?])\\s+"); // Divide o texto mantendo pontuações
+    StringBuilder resultado = new StringBuilder();
+
+    for (String frase : frases) {
+        if (!frase.isEmpty() && Character.isLetter(frase.charAt(0))) {
+            resultado.append(Character.toUpperCase(frase.charAt(0)))
+                     .append(frase.substring(1));
+        } else {
+            resultado.append(frase); // Mantém frases sem alteração caso não comecem com letra
+        }
+        resultado.append(" "); // Adiciona espaço entre frases
+    }
+
+    // Remove espaço extra no final, se houver
+    if (resultado.length() > 0) {
+        resultado.setLength(resultado.length() - 1);
+    }
+
+    return VariantPool.get(resultado.toString());
+}
